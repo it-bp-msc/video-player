@@ -1,26 +1,28 @@
-const getExcludes = (lazy) => {
+const getExcludes = lazy => {
   if (lazy) {
     // Disable transforming `import()` statements to enable lazy players
-    return ["@babel/plugin-proposal-dynamic-import"];
+    return ['@babel/plugin-proposal-dynamic-import']
   }
-  return [];
-};
+  return []
+}
 
 module.exports = {
   presets: [
-    ["@babel/preset-env", { exclude: getExcludes(process.env.LAZY) }],
-    "@babel/preset-react",
+    [
+      '@babel/preset-env',
+      { exclude: getExcludes(process.env.LAZY) }
+    ],
+    '@babel/preset-react'
   ],
   plugins: [
-    "react-hot-loader/babel",
-    "@babel/plugin-proposal-class-properties",
-    {
-      loose: true,
-    },
+    'react-hot-loader/babel',
+    '@babel/plugin-proposal-class-properties'
   ],
   env: {
     test: {
-      plugins: ["istanbul"],
-    },
-  },
-};
+      plugins: [
+        'istanbul'
+      ]
+    }
+  }
+}
